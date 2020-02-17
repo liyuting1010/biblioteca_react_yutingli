@@ -24,6 +24,12 @@
   color: white;
 }
 
+.App-button {
+  margin-top: 2vmin;
+  width: 15vw;
+  min-width: 150px;
+}
+
 .App-link {
   color: #61dafb;
 }
