@@ -3,6 +3,8 @@ Frontend react app for the biblioteca system.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Backend service(https://github.com/liyuting1010/twu_biblioteca_yutingli)
+
 ## Run locally
 Once you startup the backend spring app which served on `http://localhost/8080`, you could start the react app by the following command,
 ```shell
