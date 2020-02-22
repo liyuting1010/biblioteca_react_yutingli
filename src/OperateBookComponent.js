@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-export class ReturnBookComponent extends React.Component {
+export class OperateBookComponent extends React.Component {
     constructor(props) {
         super(props);
 
@@ -11,7 +11,7 @@ export class ReturnBookComponent extends React.Component {
     }
 
     async componentDidMount() {
-        const message = await axios.post("/return/" + this.props.id)
+        const message = await axios.post(`/${this.props.operation}/${this.props.bookId}`)
             .then(res => res.data)
             .catch(error => error.response.data);
         this.setState({result: message});
@@ -19,11 +19,9 @@ export class ReturnBookComponent extends React.Component {
 
     render() {
         return (
-            <div className='popup'>
-                <div className='popup-inner'>
-                    <p>{this.state.result}</p>
-                    <button onClick={this.props.closePopup}>close</button>
-                </div>
+            <div className='dialog'>
+                <p>{this.state.result}</p>
+                <button onClick={this.props.closeDialog}>close</button>
             </div>
         );
     }

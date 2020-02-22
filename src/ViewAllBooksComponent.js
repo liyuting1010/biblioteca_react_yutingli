@@ -1,17 +1,16 @@
 import React from "react";
 import axios from "axios";
 import {BookTableComponent} from "./BookTableComponent";
+import {CirculationComponent} from "./CirculationComponent";
 
 export class ViewAllBooksComponent extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            showViewAllBooks: false,
-            showPopup: false
+            showViewAllBooks: false
         };
         this.toggleButtonShow = this.toggleButtonShow.bind(this);
-        this.togglePopupShow = this.togglePopupShow.bind(this);
     }
 
     toggleButtonShow() {
@@ -20,12 +19,6 @@ export class ViewAllBooksComponent extends React.Component {
         })
     }
 
-
-    togglePopupShow() {
-        this.setState({
-            showPopup: !this.state.showPopup
-        })
-    }
 
     async componentDidMount() {
         const response = await axios.get("/getAll");
@@ -37,6 +30,9 @@ export class ViewAllBooksComponent extends React.Component {
             <div className="view-all-book-form">
                 <div>
                     <BookTableComponent booksList={this.state.books}/>
+                </div>
+                <div>
+                    <CirculationComponent booksList={this.state.books}/>
                 </div>
                 <div>
                     <button type="button" className="return-main-panel App-button" onClick={this.toggleButtonShow}>Return
@@ -57,7 +53,7 @@ export class ViewAllBooksComponent extends React.Component {
     render() {
         const block = this.state.showViewAllBooks ? this.renderAllBookTable() : this.renderViewAllBookButton();
         return (
-            <div className="content-block view-all-book">
+            <div className="content-block form">
                 {block}
             </div>
         )
