@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import axios from 'axios';
 import './App.css';
-import {ViewAllBooks} from './ViewAllBooks';
+import {ViewAllBooksComponent} from './ViewAllBooksComponent';
 
 class App extends React.Component {
 
@@ -10,10 +10,6 @@ class App extends React.Component {
         return axios.get("/login?username=Yuting1&password=password1").then(res => {
             console.log(res.data)
         });
-    }
-
-    register() {
-        return axios.post("/register?username=Yuting10&password=password10");
     }
 
     render() {
@@ -24,7 +20,7 @@ class App extends React.Component {
                     <img src={logo} className="App-logo" alt="logo"/>
                     {/*<button type="button" className="Login App-button" onClick={this.login}>Login</button>*/}
                     {/*<button type="button" className="Register App-button" onClick={this.register}>Register</button>*/}
-                    <ViewAllBooks />
+                    <ViewAllBooksComponent />
                 </header>
             </div>
         );
