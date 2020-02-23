@@ -11,7 +11,7 @@ export class OperateBookComponent extends React.Component {
     }
 
     async componentDidMount() {
-        const message = await axios.post(`/${this.props.operation}/${this.props.bookId}`)
+        const message = await axios.post(`/${this.props.operation}/${this.props.bookId}?username=${window.username}`)
             .then(res => res.data)
             .catch(error => error.response.data);
         this.setState({result: message});
