@@ -46,12 +46,15 @@ export class CirculationComponent extends React.Component {
                     <button value="lend" onClick={this.onSubmit}> lend</button>
                     <button value="return" onClick={this.onSubmit}> return</button>
                     {
-                        this.state.showDialog ?
+                        this.state.showDialog && window.loginState ?
                             <OperateBookComponent
                                 bookId={this.state.inputValue}
                                 operation={this.state.buttonValue}
                                 closeDialog={this.toggleDialogShow}
-                            /> : null
+                            /> :
+                            <p>
+                                Please login first!
+                            </p>
                     }
                 </div>
             </div>

@@ -26,13 +26,14 @@ export class ViewAllBooksComponent extends React.Component {
     }
 
     renderAllBookTable() {
+        const booksList = this.state.books;
         return (
             <div className="view-all-book-form">
                 <div>
-                    <BookTableComponent booksList={this.state.books}/>
+                    <BookTableComponent booksList={booksList}/>
                 </div>
                 <div>
-                    <CirculationComponent booksList={this.state.books}/>
+                    <CirculationComponent booksList={booksList}/>
                 </div>
                 <div>
                     <button type="button" className="return-main-panel App-button" onClick={this.toggleButtonShow}>Return

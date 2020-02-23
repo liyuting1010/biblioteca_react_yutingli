@@ -4,9 +4,8 @@ import React from "react";
 export class BookTableComponent extends React.Component {
     render() {
         let bookTable = [];
-        console.log(this.props.booksList);
-        this.props.booksList.forEach(item => bookTable.push(
-            <tr>
+        this.props.booksList.forEach((item, index) => bookTable.push(
+            <tr key={index}>
                 <td>{item.id}</td>
                 <td>{item.name}</td>
                 <td>{item.author}</td>
