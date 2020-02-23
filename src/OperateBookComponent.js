@@ -19,10 +19,16 @@ export class OperateBookComponent extends React.Component {
 
     render() {
         return (
-            <div className='dialog'>
-                <p>{this.state.result}</p>
-                <button onClick={this.props.closeDialog}>close</button>
-            </div>
+            !!this.props.bookId ?
+                <div className='dialog'>
+                    <p>{this.state.result}</p>
+                    <button onClick={this.props.closeDialog}>close</button>
+                </div> :
+                <div className='dialog'>
+                    <p>
+                        {`Please enter the book id if you want to ${this.props.operation}`}
+                    </p>
+                </div>
         );
     }
 }
