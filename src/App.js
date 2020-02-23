@@ -3,21 +3,32 @@ import logo from './logo.svg';
 import './App.css';
 import LoginComponent from "./auth/LoginComponent";
 import {ViewAllBooksComponent} from "./book/ViewAllBooksComponent";
+import {RecordComponent} from "./user/RecordComponent";
 
 window.loginState = false;
+window.username = null;
 class App extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            loginPage: false
+            loginPage: false,
+            recordPage: false
         };
+
         this.showLoginPage = this.showLoginPage.bind(this);
+        this.showRecordPage = this.showRecordPage.bind(this);
     }
 
     showLoginPage() {
         this.setState({
             loginPage: !this.state.loginPage
+        })
+    }
+
+    showRecordPage() {
+        this.setState({
+            recordPage: !this.state.recordPage
         })
     }
 
@@ -27,13 +38,25 @@ class App extends React.Component {
                 <header className="App-header">
                     <h1>Biblioteca system</h1>
                     <img src={logo} className="App-logo" alt="logo"/>
-                    <button type="button" className="Login App-button" onClick={this.showLoginPage}>
-                        Login
-                    </button>
-                    {
-                        this.state.loginPage ? <LoginComponent returnMainPage={this.showLoginPage}/> : null
-                    }
-                    {/*<button type="button" className="Register App-button" onClick={this.register}>Register</button>*/}
+                    <div>
+                        <button type="button" className="Login App-button" onClick={this.showLoginPage}>
+                            Login
+                        </button>
+                        {
+                            this.state.loginPage ? <LoginComponent returnMainPage={this.showLoginPage}/> : null
+
+                        }
+                    </div>
+                    <div>
+                        {
+                            window.loginState ?
+                                <button type="button" className="View-records App-button" onClick={this.showRecordPage}>
+                                    My information</button> : null
+                        }
+                        {
+                            this.state.recordPage ? <RecordComponent return={this.showRecordPage}/> : null
+                        }
+                    </div>
                     <ViewAllBooksComponent />
                 </header>
             </div>

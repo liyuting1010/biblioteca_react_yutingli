@@ -31,6 +31,7 @@ export default class Login extends React.Component {
     render() {
         if (this.state.responseStatus === 200) {
             window.loginState = true;
+            window.username = this.props.usernameInput;
             return (
                 <div>
                     {this.state.result}
